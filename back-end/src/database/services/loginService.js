@@ -4,7 +4,7 @@ const path = require('path');
 const fs = require('fs');
 const jwt = require('jsonwebtoken');
 const md5 = require('md5');
-const { User } = require('../models')
+const { User } = require('../models');
 
 
 
