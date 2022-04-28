@@ -1,4 +1,4 @@
-/* const express = require('express');
+const express = require('express');
 const loginController = require('../database/controllers/loginController');
 const loginError = require('../database/middlewares/loginError');
 
@@ -9,4 +9,4 @@ router
   .use(loginError.validatePassword)
   .post('/', loginController.login);
 
-module.exports = { router }; */
+module.exports = { router };

@@ -4,9 +4,9 @@ const app = express();
 
 app.use(express.json());
 
-// const loginRouter = require('../routes/loginRoute');
+const loginRouter = require('../routes/loginRoute');
 
-// app.use('/login', loginRouter.router);
+app.use('/login', loginRouter.router);
 
 app.get('/coffee', (_req, res) => res.status(418).end());
 

@@ -1,4 +1,4 @@
-/* require('dotenv').config();
+require('dotenv').config();
 // const jwt = require('jsonwebtoken');
 
 // const { User } = require('../models/User');
@@ -31,4 +31,4 @@ const validatePassword = (req, res, next) => {
 module.exports = {
   validateEmail,
   validatePassword,
-}; */
+};
