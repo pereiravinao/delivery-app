@@ -22,5 +22,5 @@ module.exports = (sequelize, DataTypes) => {
     });
   };
 
-  return UserBook;
+  return SaleProduct;
 };
