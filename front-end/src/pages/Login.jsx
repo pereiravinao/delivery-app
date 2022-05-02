@@ -1,6 +1,7 @@
 import React from 'react';
 import Form from 'react-bootstrap/Form';
 import Button from 'react-bootstrap/Button';
+import Alert from 'react-bootstrap/Alert';
 import '../style/Login.css';
 
 const Login = () => (
@@ -17,13 +18,13 @@ const Login = () => (
       <Button variant="primary" type="submit" data-testid="common_login__button-login">
         Login
       </Button>
-      <Button variant="secondary" type="submit" data-testid="common_login__button-register">
+      <Button variant="outline-primary" type="submit" data-testid="common_login__button-register">
         Ainda não tenho conta
       </Button>
     </Form>
-    <p className="error" data-testid="common_login__element-invalid-email">
+    <Alert key='danger' variant='danger' className="error" data-testid="common_login__element-invalid-email">
       Mensagem de erro.
-    </p>
+    </Alert>
   </div >
 );
 
