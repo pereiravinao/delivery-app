@@ -13,8 +13,8 @@ module.exports = (sequelize, DataTypes) => {
   });
 
   User.associate = (models) => {
-    User.hasMany(models.Sale, {foreingKey: 'user_id', as: 'user_sales'});
-    User.hasMany(models.Sale, {foreingKey: 'seller_id', as: 'user_seller'});
+    User.hasMany(models.sale, {foreingKey: 'user_id', as: 'user_sales'});
+    User.hasMany(models.sale, {foreingKey: 'seller_id', as: 'user_seller'});
   }; 
 
   return User;
