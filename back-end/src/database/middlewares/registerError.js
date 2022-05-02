@@ -1,5 +1,6 @@
 require('dotenv').config();
 
+const { Op } = require("sequelize");
 const { User } = require('../models');
 
 const validateName = (req, res, next) => {
@@ -12,9 +13,14 @@ const validateName = (req, res, next) => {
 }
 
 const existValues = async (req, res, next) => {
-  const { email } = req.body;
+  const { email, name } = req.body;
   const checkEmail = await User.findOne({
-    where: { email },
+    where: {
+      [Op.or]: [
+        { name },
+        { email },
+      ]
+    }
   });
   if (checkEmail) {
     return res.status(409).json({ message: 'Name or email already registered' });
