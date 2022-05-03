@@ -4,7 +4,7 @@ const path = require('path');
 const fs = require('fs');
 const jwt = require('jsonwebtoken');
 const md5 = require('md5');
-const { User } = require('../models');
+const { user } = require('../models');
 
 
 
@@ -15,7 +15,7 @@ const getLogin = async (login) => {
     try {
       const { email, password } = login;
       const hash = md5(password);
-      const loginEmail = await User.findOne({
+      const loginEmail = await user.findOne({
         where: { email, password: hash },
       });
       if (!loginEmail) return null;
