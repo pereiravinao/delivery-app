@@ -1,7 +1,7 @@
 require('dotenv').config();
 
 const { Op } = require("sequelize");
-const { User } = require('../models');
+const { user } = require('../models');
 
 const validateName = (req, res, next) => {
   const { name } = req.body;
@@ -14,7 +14,7 @@ const validateName = (req, res, next) => {
 
 const existValues = async (req, res, next) => {
   const { email, name } = req.body;
-  const checkEmail = await User.findOne({
+  const checkEmail = await user.findOne({
     where: {
       [Op.or]: [
         { name },
