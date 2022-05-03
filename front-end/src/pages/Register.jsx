@@ -22,7 +22,6 @@ const Register = () => {
     if (result.status === ERROR) {
       setError(true);
     }
-    console.log(result);
   };
 
   const MIN_LENGTH_NAME = 12;

@@ -16,7 +16,6 @@ export const fetchApi = async (email, password) => {
     }),
   });
   const response = await fecthLogin;
-  console.log(response);
   return response;
 };
 

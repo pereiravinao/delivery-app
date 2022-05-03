@@ -21,7 +21,8 @@ const getLogin = async (login) => {
       if (!loginEmail) return null;
       const { id, name, role } = loginEmail;
       const token = jwt.sign({ id, name, role, email }, SECRET);
-      return token;
+      const data = { id, token, name, role, email };
+      return data;
     } catch (error) {
       console.log(error);
     }

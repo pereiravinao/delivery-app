@@ -24,6 +24,10 @@ const Login = () => {
     if (result.status === ERROR) {
       setError(true);
     }
+    const POST = 201;
+    if (result.status === POST) {
+      navigate('/customer');
+    }
   };
 
   const MIN_LENGTH = 6;
