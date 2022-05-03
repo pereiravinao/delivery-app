@@ -18,11 +18,12 @@ const Register = () => {
   const handleClick = async (event) => {
     event.preventDefault();
     const result = await fetchApiRegister(name, email, password);
-    if (result.status === 409) {
+    const ERROR = 409;
+    if (result.status === ERROR) {
       setError(true);
     }
     console.log(result);
-  }
+  };
 
   const MIN_LENGTH_NAME = 12;
   const MIN_LENGTH_EMAIL = 6;
@@ -72,14 +73,15 @@ const Register = () => {
           Cadastrar
         </Button>
       </Form>
-      { error && <Alert
-        key="danger"
-        variant="danger"
-        className="error"
-        data-testid="common_register__element-invalid_register"
-      >
-        Nome ou email já existentes.
-      </Alert>
+      { 
+        error && <Alert
+          key="danger"
+          variant="danger"
+          className="error"
+          data-testid="common_register__element-invalid_register"
+        >
+          Nome ou email já existentes.
+        </Alert>
       }
     </>
   );

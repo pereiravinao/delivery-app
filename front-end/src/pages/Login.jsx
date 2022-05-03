@@ -64,19 +64,20 @@ const Login = () => {
           type="submit"
           data-testid="common_login__button-register"
           className="mt-3"
-          onClick={ () => { navigate('/register') } }
+          onClick={ () => { navigate('/register'); } }
         >
           Ainda não tenho conta
         </Button>
       </Form>
-      { error && <Alert
-        key="danger"
-        variant="danger"
-        className="error"
-        data-testid="common_login__element-invalid-email"
-      >
-        Login ou senha incorretos.
-      </Alert>
+      {
+        error && <Alert
+          key="danger"
+          variant="danger"
+          className="error"
+          data-testid="common_login__element-invalid-email"
+        >
+          Login ou senha incorretos.
+        </Alert>
       }
     </>
   );

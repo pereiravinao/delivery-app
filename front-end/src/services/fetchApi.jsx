@@ -1,5 +1,5 @@
 export const fetchApi = async (email, password) => {
-  return await fetch('http://localhost:3003/login', {
+  const fecthLogin = fetch('http://localhost:3003/login', {
     method: 'POST',
     headers: {
       Accept: 'application/json',
@@ -9,11 +9,12 @@ export const fetchApi = async (email, password) => {
       email,
       password,
     })
-  }
-)};
+  });
+  return fecthLogin;
+};
 
 export const fetchApiRegister = async (name, email, password) => {
-  return await fetch('http://localhost:3003/register', {
+  const fetchRegister = fetch('http://localhost:3003/register', {
     method: 'POST',
     headers: {
       Accept: 'application/json',
@@ -24,5 +25,6 @@ export const fetchApiRegister = async (name, email, password) => {
       email,
       password,
     })
-  }
-)};
+  });
+  return fetchRegister;
+};
