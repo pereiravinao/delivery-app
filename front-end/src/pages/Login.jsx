@@ -16,27 +16,53 @@ const Login = () => {
   const MIN_LENGTH = 6;
 
   return (
-    <div>
-      <Form>
+    <>
+      <Form className="card mt-3 pb-3 pt-1 container-sm w-50">
         <Form.Group className="mb-3" controlId="formBasicEmail">
           <Form.Label>Login</Form.Label>
-          <Form.Control type="email" placeholder="Enter email" data-testid="common_login__input-email" onChange={ ({ target }) => setEmail(target.value) } />
+          <Form.Control
+            type="email"
+            placeholder="email@trybeer.com.br"
+            data-testid="common_login__input-email"
+            onChange={ ({ target }) => setEmail(target.value) }
+          />
         </Form.Group>
         <Form.Group className="mb-3" controlId="formBasicPassword">
           <Form.Label>Senha</Form.Label>
-          <Form.Control type="password" placeholder="Password" data-testid="common_login__input-password" onChange={ ({ target }) => setPassword(target.value) } />
+          <Form.Control
+            type="password"
+            placeholder="**********"
+            data-testid="common_login__input-password"
+            onChange={ ({ target }) => setPassword(target.value) }
+          />
         </Form.Group>
-        <Button variant="primary" type="submit" data-testid="common_login__button-login" disabled={ !(isEmailValid(email) && password.length >= MIN_LENGTH) }>
+        <Button
+          variant="primary"
+          type="submit"
+          data-testid="common_login__button-login"
+          disabled={ !(isEmailValid(email) && password.length >= MIN_LENGTH) }
+          className="mt-3"
+        >
           Login
         </Button>
-        <Button variant="outline-primary" type="submit" data-testid="common_login__button-register">
+        <Button
+          variant="outline-primary"
+          type="submit"
+          data-testid="common_login__button-register"
+          className="mt-3"
+        >
           Ainda não tenho conta
         </Button>
       </Form>
-      <Alert key='danger' variant='danger' className="error" data-testid="common_login__element-invalid-email">
+      <Alert
+        key="danger"
+        variant="danger"
+        className="error"
+        data-testid="common_login__element-invalid-email"
+      >
         Mensagem de erro.
       </Alert>
-    </div >
+    </>
   );
 };
 
