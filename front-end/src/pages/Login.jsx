@@ -26,7 +26,7 @@ const Login = () => {
     }
     const POST = 200;
     if (result.status === POST) {
-      navigate('/customer');
+      navigate('/customer/products');
     }
   };
 
