@@ -27,6 +27,16 @@ const Register = () => {
 
   const MIN_LENGTH_NAME = 12;
   const MIN_LENGTH_EMAIL = 6;
+  const ALERT = (
+    <Alert
+      key="danger"
+      variant="danger"
+      className="error"
+      data-testid="common_register__element-invalid_register"
+    >
+      Nome ou email já existentes.
+    </Alert>
+  );
 
   return (
     <>
@@ -73,16 +83,7 @@ const Register = () => {
           Cadastrar
         </Button>
       </Form>
-      { 
-        error && <Alert
-          key="danger"
-          variant="danger"
-          className="error"
-          data-testid="common_register__element-invalid_register"
-        >
-          Nome ou email já existentes.
-        </Alert>
-      }
+      { error && ALERT }
     </>
   );
 };

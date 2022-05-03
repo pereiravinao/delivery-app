@@ -27,6 +27,16 @@ const Login = () => {
   };
 
   const MIN_LENGTH = 6;
+  const ALERT = (
+    <Alert
+      key="danger"
+      variant="danger"
+      className="error"
+      data-testid="common_login__element-invalid-email"
+    >
+      Login ou senha incorretos.
+    </Alert>
+  );
 
   return (
     <>
@@ -69,16 +79,7 @@ const Login = () => {
           Ainda não tenho conta
         </Button>
       </Form>
-      {
-        error && <Alert
-          key="danger"
-          variant="danger"
-          className="error"
-          data-testid="common_login__element-invalid-email"
-        >
-          Login ou senha incorretos.
-        </Alert>
-      }
+      { error && ALERT }
     </>
   );
 };
