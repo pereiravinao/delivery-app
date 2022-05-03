@@ -24,7 +24,7 @@ const Login = () => {
     if (result.status === ERROR) {
       setError(true);
     }
-    const POST = 201;
+    const POST = 200;
     if (result.status === POST) {
       navigate('/customer');
     }

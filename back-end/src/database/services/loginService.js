@@ -16,9 +16,10 @@ const getLogin = async (login) => {
       const { email, password } = login;
       const hash = md5(password);
       const loginEmail = await user.findOne({
-        where: { email, password: hash },
+        where: { email },
       });
       if (!loginEmail) return null;
+      if (loginEmail.password !== hash) return null;
       const { id, name, role } = loginEmail;
       const token = jwt.sign({ id, name, role, email }, SECRET);
       const data = { id, token, name, role, email };
