@@ -2,18 +2,28 @@ import React, { useState } from 'react';
 import Form from 'react-bootstrap/Form';
 import Button from 'react-bootstrap/Button';
 import Alert from 'react-bootstrap/Alert';
+import { fetchApi } from '../services/fetchApi';
 import '../style/Login.css';
 
 const Login = () => {
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
+  const [error, setError] = useState(false);
 
   const isEmailValid = (userEmail) => {
     const regexEmail = /^[\w-.]+@([\w-]+\.)+[\w-]{2,4}$/;
     return regexEmail.test(userEmail);
   };
 
-  const MIN_LENGTH = 6;
+const handleClick = async (event) => {
+  event.preventDefault();
+  const result = await fetchApi(email, password);
+  if (result.status === 404) {
+    setError(true);
+  }
+}
+
+const MIN_LENGTH = 6;
 
   return (
     <>
@@ -42,6 +52,7 @@ const Login = () => {
           data-testid="common_login__button-login"
           disabled={ !(isEmailValid(email) && password.length >= MIN_LENGTH) }
           className="mt-3"
+          onClick={ handleClick }
         >
           Login
         </Button>
@@ -54,14 +65,15 @@ const Login = () => {
           Ainda não tenho conta
         </Button>
       </Form>
-      <Alert
+      { error && <Alert
         key="danger"
         variant="danger"
         className="error"
         data-testid="common_login__element-invalid-email"
       >
-        Mensagem de erro.
+        Login ou senha incorretos.
       </Alert>
+      }
     </>
   );
 };
