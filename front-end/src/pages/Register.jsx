@@ -1,16 +1,16 @@
 import React, { useState } from 'react';
-import { useNavigate } from 'react-router-dom';
 import Form from 'react-bootstrap/Form';
 import Button from 'react-bootstrap/Button';
 import Alert from 'react-bootstrap/Alert';
-import { fetchApi } from '../services/fetchApi';
+import { useNavigate } from 'react-router-dom';
+import { fetchApiRegister } from '../services/fetchApi';
 
-const Login = () => {
-  const navigate = useNavigate();
-
+const Register = () => {
+  const [name, setName] = useState('');
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
   const [error, setError] = useState(false);
+  const navigate = useNavigate();
 
   const isEmailValid = (userEmail) => {
     const regexEmail = /^[\w-.]+@([\w-]+\.)+[\w-]{2,4}$/;
@@ -19,38 +19,49 @@ const Login = () => {
 
   const handleClick = async (event) => {
     event.preventDefault();
-    const result = await fetchApi(email, password);
-    const ERROR = 404;
+    const result = await fetchApiRegister(name, email, password);
+    const ERROR = 409;
     if (result.status === ERROR) {
       setError(true);
     }
-    const POST = 200;
-    if (result.status === POST) {
+    const STATUS_CODE_CREATED = 201;
+    if (result.status === STATUS_CODE_CREATED) {
+      setError(false);
       navigate('/customer/products');
     }
   };
 
-  const MIN_LENGTH = 6;
+  const MIN_LENGTH_NAME = 12;
+  const MIN_LENGTH_EMAIL = 6;
   const ALERT = (
     <Alert
       key="danger"
       variant="danger"
       className="error"
-      data-testid="common_login__element-invalid-email"
+      data-testid="common_register__element-invalid_register"
     >
-      Login ou senha incorretos.
+      Nome ou email já existentes.
     </Alert>
   );
 
   return (
     <>
       <Form className="card mt-3 pb-3 pt-1 container-sm w-50">
+        <Form.Group className="mb-3" controlId="formBasicName">
+          <Form.Label>Nome</Form.Label>
+          <Form.Control
+            type="text"
+            placeholder="Nome completo"
+            data-testid="common_register__input-name"
+            onChange={ ({ target }) => setName(target.value) }
+          />
+        </Form.Group>
         <Form.Group className="mb-3" controlId="formBasicEmail">
-          <Form.Label>Login</Form.Label>
+          <Form.Label>Email</Form.Label>
           <Form.Control
             type="email"
             placeholder="email@trybeer.com.br"
-            data-testid="common_login__input-email"
+            data-testid="common_register__input-email"
             onChange={ ({ target }) => setEmail(target.value) }
           />
         </Form.Group>
@@ -59,28 +70,23 @@ const Login = () => {
           <Form.Control
             type="password"
             placeholder="**********"
-            data-testid="common_login__input-password"
+            data-testid="common_register__input-password"
             onChange={ ({ target }) => setPassword(target.value) }
           />
         </Form.Group>
         <Button
           variant="primary"
           type="submit"
-          data-testid="common_login__button-login"
-          disabled={ !(isEmailValid(email) && password.length >= MIN_LENGTH) }
+          data-testid="common_register__button-register"
+          disabled={
+            !(isEmailValid(email)
+            && password.length >= MIN_LENGTH_EMAIL
+            && name.length >= MIN_LENGTH_NAME)
+          }
           className="mt-3"
           onClick={ handleClick }
         >
-          Login
-        </Button>
-        <Button
-          variant="outline-primary"
-          type="submit"
-          data-testid="common_login__button-register"
-          className="mt-3"
-          onClick={ () => { navigate('/register'); } }
-        >
-          Ainda não tenho conta
+          Cadastrar
         </Button>
       </Form>
       { error && ALERT }
@@ -88,4 +94,4 @@ const Login = () => {
   );
 };
 
-export default Login;
+export default Register;
