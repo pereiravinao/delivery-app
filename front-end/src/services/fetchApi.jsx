@@ -1,5 +1,5 @@
 const appJson = 'application/json';
-const NUMBER = 3003;
+const NUMBER = 3001;
 const PORT = process.env.REACT_APP_BACKEND_PORT || NUMBER;
 const URL = process.env.REACT_APP_HOSTNAME || 'localhost';
 

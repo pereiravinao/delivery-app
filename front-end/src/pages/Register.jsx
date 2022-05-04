@@ -2,6 +2,7 @@ import React, { useState } from 'react';
 import Form from 'react-bootstrap/Form';
 import Button from 'react-bootstrap/Button';
 import Alert from 'react-bootstrap/Alert';
+import { useNavigate } from 'react-router-dom';
 import { fetchApiRegister } from '../services/fetchApi';
 
 const Register = () => {
@@ -9,6 +10,7 @@ const Register = () => {
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
   const [error, setError] = useState(false);
+  const navigate = useNavigate();
 
   const isEmailValid = (userEmail) => {
     const regexEmail = /^[\w-.]+@([\w-]+\.)+[\w-]{2,4}$/;
@@ -21,6 +23,11 @@ const Register = () => {
     const ERROR = 409;
     if (result.status === ERROR) {
       setError(true);
+    }
+    const STATUS_CODE_CREATED = 201;
+    if (result.status === STATUS_CODE_CREATED) {
+      setError(false);
+      navigate('/customer/products');
     }
   };
 
