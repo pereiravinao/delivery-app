@@ -1,16 +1,17 @@
-# 🚧 README em construção 🚧
 
-<!-- Olá, Tryber!
+# Delivery App
 
-Esse é apenas um arquivo inicial para o README do seu projeto.
+Um sistema FullStack para um Delivery de bebidas.
+Backend desenvolvido em NodeJS com framwork express e sequelize para comunicação com banco de dados MySQL.
+Frontend desenvolvido com ReactJs.
 
-É essencial que você preencha esse documento por conta própria, ok?
+## Autores
+- [@pereiravinao](https://www.github.com/pereiravinao)
+- [@israelnazareth](https://www.github.com/israelnazareth)
+- [@Humberto-Bonadiman](https://www.github.com/Humberto-Bonadiman)
+- [@jarana-2020](https://www.github.com/jarana-2020)
 
-Não deixe de usar nossas dicas de escrita de README de projetos, e deixe sua criatividade brilhar!
+## Apêndice
+Este projeto contém uma estrutura de aplicação em NodeJs e ReactJs criado e configurado pela escola Trybe
+A pasta scripts foi adicionada pela Trybe.
 
-⚠️ IMPORTANTE: você precisa deixar nítido:
-- quais arquivos/pastas foram desenvolvidos por você; 
-- quais arquivos/pastas foram desenvolvidos por outra pessoa estudante;
-- quais arquivos/pastas foram desenvolvidos pela Trybe.
-
--->
